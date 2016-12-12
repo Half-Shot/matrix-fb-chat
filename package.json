@@ -1,0 +1,24 @@
+{
+  "name": "matrix-fb-chat",
+  "version": "0.0.1",
+  "description": "Chat on facebook via Matrix",
+  "main": "matrix-fbook.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "tslint --project ./tsconfig.json",
+    "build": "tsc",
+    "start": "node ./build/src/matrix-fbook.js"
+  },
+  "author": "Will Hunt <half-shot@molrams.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "0.0.3",
+    "bluebird": "^3.4.6",
+    "facebook-chat-api": "^1.2.0",
+    "js-yaml": "^3.7.0",
+    "matrix-js-sdk": "^0.7.1",
+    "npmlog": "^4.0.1",
+    "tslint": "^4.0.2",
+    "typescript": "^2.1.4"
+  }
+}

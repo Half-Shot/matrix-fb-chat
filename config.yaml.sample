@@ -1,0 +1,17 @@
+facebook:
+  user_id: # See Readme
+  email: # Your FB Email
+  password: # Your FB Password
+
+matrix:
+  user_id: # Bot user's userid
+  token: # Bot user's token
+  homeserver: # Homeserver url (with protocol and port)
+
+rooms: # Mapping of roomids to 'threads'
+  - room: "!foodsdoobar3kcvdhi:half-shot.uk"
+    thread: "12345678901234567890"
+  - room: "!foodsdoobar3kcvdhi:half-shot.uk"
+    thread: "12345678901234567890"
+  - room: "!foodsdoobar3kcvdhi:half-shot.uk"
+    thread: "12345678901234567890"
