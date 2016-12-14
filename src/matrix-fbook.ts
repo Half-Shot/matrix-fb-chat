@@ -2,16 +2,21 @@ import { Config } from "./config";
 import { Facebook } from "./facebook";
 import { Matrix } from "./matrix";
 import { RoomMapping } from "./roomMapping";
+import * as CLIArgs from "command-line-args";
 import * as log from "npmlog";
 
-function main () {
+import "polyfill.js";
+
+function main (args) {
+  const checkThreads = args["list-threads"] === true;
+
   let appCfg: Config = new Config();
-  appCfg.readConfig("config.yaml");
+  appCfg.readConfig(args.config || "config.yaml");
 
   let fbook: Facebook = new Facebook(appCfg);
-  let matrix: Matrix = new Matrix(appCfg.homeserver, appCfg.token, appCfg.userId);
+  let matrix: Matrix = new Matrix(appCfg.Homeserver, appCfg.Token, appCfg.UserId);
   let ignoreList = [];
-  for (let roomDef of appCfg.rooms) {
+  for (let roomDef of appCfg.Rooms) {
     matrix.AddRoom(roomDef.room);
     fbook.BindThread(roomDef.thread);
   }
@@ -42,4 +47,7 @@ function main () {
 
 }
 
-main();
+const args: any = CLIArgs([
+      { name: "config", alias: "c", type: String },
+]);
+main(args);

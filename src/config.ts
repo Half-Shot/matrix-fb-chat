@@ -1,4 +1,5 @@
-import * as FS from "fs";
+import * as Fs from "fs";
+import * as Path from "path";
 import * as Yaml from "js-yaml";
 import { Auth } from "./auth";
 import { RoomMapping } from "./roomMapping";
@@ -12,34 +13,39 @@ export class Config {
   private mxHomeserver: string;
   private roomMappings: RoomMapping[];
 
-  get userId (): string {
+  get FacebookId(): string {
+    return this.fbUserId;
+  }
+
+  get UserId (): string {
     return this.mxUserId;
   }
-  get token (): string {
+  get Token (): string {
     return this.mxToken;
   }
-  get homeserver (): string {
+  get Homeserver (): string {
     return this.mxHomeserver;
   }
 
-  get rooms (): RoomMapping[] {
+  get Rooms (): RoomMapping[] {
     return this.roomMappings;
   }
 
   public GetRoomByRoom(roomId: string): RoomMapping {
-    return this.rooms.find((room: RoomMapping) : boolean => {
+    return this.Rooms.find((room: RoomMapping) : boolean => {
       return room.room === roomId;
     });
   }
 
   public GetRoomByThread(thread: string): RoomMapping  {
-    return this.rooms.find((room: RoomMapping) : boolean => {
+    return this.Rooms.find((room: RoomMapping) : boolean => {
       return room.thread === thread;
     });
   }
 
   public readConfig(file: string) {
-    let regObj = Yaml.safeLoad(FS.readFileSync(file, "utf8"));
+    file = Path.resolve(file);
+    let regObj = Yaml.safeLoad(Fs.readFileSync(file, "utf8"));
     this.fbUserId = regObj.facebook.user_id;
     this.fbEmail = regObj.facebook.email;
     this.fbPassword = regObj.facebook.password;
