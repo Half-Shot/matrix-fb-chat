@@ -13,7 +13,7 @@
   "author": "Will Hunt <half-shot@molrams.com>",
   "license": "MIT",
   "dependencies": {
-    "@types/node": "0.0.3",
+    "@types/node": "^6.0.52",
     "bluebird": "^3.4.6",
     "command-line-args": "^3.0.4",
     "facebook-chat-api": "^1.2.0",
